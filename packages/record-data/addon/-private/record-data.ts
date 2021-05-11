@@ -18,10 +18,13 @@ type StableRecordIdentifier = import('@ember-data/store/-private/ts-interfaces/i
 type RecordDataStoreWrapper = import('@ember-data/store/-private').RecordDataStoreWrapper;
 type RecordIdentifier = import('@ember-data/store/-private/ts-interfaces/identifier').RecordIdentifier;
 type RelationshipRecordData = import('./ts-interfaces/relationship-record-data').RelationshipRecordData;
-type DefaultSingleResourceRelationship = import('./ts-interfaces/relationship-record-data').DefaultSingleResourceRelationship;
-type DefaultCollectionResourceRelationship = import('./ts-interfaces/relationship-record-data').DefaultCollectionResourceRelationship;
+type DefaultSingleResourceRelationship =
+  import('./ts-interfaces/relationship-record-data').DefaultSingleResourceRelationship;
+type DefaultCollectionResourceRelationship =
+  import('./ts-interfaces/relationship-record-data').DefaultCollectionResourceRelationship;
 type JsonApiResource = import('@ember-data/store/-private/ts-interfaces/record-data-json-api').JsonApiResource;
-type JsonApiValidationError = import('@ember-data/store/-private/ts-interfaces/record-data-json-api').JsonApiValidationError;
+type JsonApiValidationError =
+  import('@ember-data/store/-private/ts-interfaces/record-data-json-api').JsonApiValidationError;
 type AttributesHash = import('@ember-data/store/-private/ts-interfaces/record-data-json-api').AttributesHash;
 type ChangedAttributesHash = import('@ember-data/store/-private/ts-interfaces/record-data').ChangedAttributesHash;
 type ManyRelationship = import('./relationships/state/has-many').default;

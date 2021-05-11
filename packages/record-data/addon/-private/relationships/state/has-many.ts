@@ -8,7 +8,8 @@ import { isImplicit, isNew } from '../../graph/-utils';
 type UpgradedMeta = import('../../graph/-edge-definition').UpgradedMeta;
 type Graph = import('../../graph').Graph;
 type StableRecordIdentifier = import('@ember-data/store/-private/ts-interfaces/identifier').StableRecordIdentifier;
-type DefaultCollectionResourceRelationship = import('../../ts-interfaces/relationship-record-data').DefaultCollectionResourceRelationship;
+type DefaultCollectionResourceRelationship =
+  import('../../ts-interfaces/relationship-record-data').DefaultCollectionResourceRelationship;
 type Links = import('@ember-data/store/-private/ts-interfaces/ember-data-json-api').Links;
 type Meta = import('@ember-data/store/-private/ts-interfaces/ember-data-json-api').Meta;
 type RelationshipState = import('../../graph/-state').RelationshipState;

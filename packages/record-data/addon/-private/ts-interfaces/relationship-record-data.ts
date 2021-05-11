@@ -1,6 +1,8 @@
 type StableRecordIdentifier = import('@ember-data/store/-private/ts-interfaces/identifier').StableRecordIdentifier;
-type SingleResourceRelationship = import('@ember-data/store/-private/ts-interfaces/ember-data-json-api').SingleResourceRelationship;
-type CollectionResourceRelationship = import('@ember-data/store/-private/ts-interfaces/ember-data-json-api').CollectionResourceRelationship;
+type SingleResourceRelationship =
+  import('@ember-data/store/-private/ts-interfaces/ember-data-json-api').SingleResourceRelationship;
+type CollectionResourceRelationship =
+  import('@ember-data/store/-private/ts-interfaces/ember-data-json-api').CollectionResourceRelationship;
 type RecordData = import('@ember-data/store/-private/ts-interfaces/record-data').RecordData;
 type HasManyRelationship = import('../relationships/state/has-many').default;
 type BelongsToRelationship = import('../relationships/state/belongs-to').default;
