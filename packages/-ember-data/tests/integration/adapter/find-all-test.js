@@ -184,11 +184,9 @@ module('integration/adapter/find-all - Finding All Records of a Type', function 
     let persons = store.peekAll('person');
     assert.equal(persons.length, 1);
 
-    let promise = store.findAll('person').then((persons) => {
-      assert.false(persons.isUpdating);
-      assert.equal(persons.length, 2);
-      return persons;
-    });
+    let promise = await store.findAll('person');
+    assert.false(persons.isUpdating);
+    assert.equal(persons.length, 2);
 
     assert.true(persons.isUpdating);
 
