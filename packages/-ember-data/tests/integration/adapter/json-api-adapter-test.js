@@ -113,8 +113,8 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     let post = await store.findRecord('post', '1');
 
     assert.equal(passedUrl[0], '/posts/1', 'Builds URL correctly');
-    assert.equal(post.get('id'), '1', 'Stores record with correct id');
-    assert.equal(post.get('title'), 'Ember.js rocks', 'Title for record is correct');
+    assert.equal(post.id, '1', 'Stores record with correct id');
+    assert.equal(post.title, 'Ember.js rocks', 'Title for record is correct');
   });
 
   test('find all records with sideloaded relationships', async function (assert) {
@@ -185,30 +185,30 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
 
     assert.equal(passedUrl[0], '/posts');
 
-    assert.equal(posts.get('length'), 2, 'Returns two post records');
-    assert.equal(posts.get('firstObject.title'), 'Ember.js rocks', 'The title for the first post is correct');
-    assert.equal(posts.get('lastObject.title'), 'Tomster rules', 'The title for the second post is correct');
+    assert.equal(posts.length, 2, 'Returns two post records');
+    assert.equal(posts.firstObject.title, 'Ember.js rocks', 'The title for the first post is correct');
+    assert.equal(posts.lastObject.title, 'Tomster rules', 'The title for the second post is correct');
 
     assert.equal(
-      posts.get('firstObject.author.firstName'),
+      posts.firstObject.author.get('firstName'),
       'Yehuda',
       'The author for the first post is loaded and has the correct first name'
     );
     assert.equal(
-      posts.get('lastObject.author.lastName'),
+      posts.lastObject.author.get('lastName'),
       'Katz',
       'The author for the last post is loaded and has the correct last name'
     );
 
-    assert.equal(posts.get('firstObject.comments.length'), 0, 'First post doesnt have comments');
+    assert.equal(posts.firstObject.comments.length, 0, 'First post doesnt have comments');
 
     assert.equal(
-      posts.get('lastObject.comments.firstObject.text'),
+      posts.lastObject.comments.firstObject.text,
       'This is the first comment',
       'Loads first comment for second post'
     );
     assert.equal(
-      posts.get('lastObject.comments.lastObject.text'),
+      posts.lastObject.comments.lastObject.text,
       'This is the second comment',
       'Loads second comment for second post'
     );
@@ -236,8 +236,8 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(passedUrl[0], '/posts', 'Builds correct URL');
     assert.deepEqual(passedHash[0], { data: { filter: { id: 1 } } }, 'Sends correct params to adapter');
 
-    assert.equal(posts.get('length'), 1, 'Returns the correct number of records');
-    assert.equal(posts.get('firstObject.title'), 'Ember.js rocks', 'Sets correct title to record');
+    assert.equal(posts.length, 1, 'Returns the correct number of records');
+    assert.equal(posts.firstObject.title, 'Ember.js rocks', 'Sets correct title to record');
   });
 
   test('queryRecord - primary data being a single record', async function (assert) {
@@ -256,7 +256,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     let post = await store.queryRecord('post', {});
 
     assert.equal(passedUrl[0], '/posts', 'Builds correc URL');
-    assert.equal(post.get('title'), 'Ember.js rocks', 'Sets correct title to record');
+    assert.equal(post.title, 'Ember.js rocks', 'Sets correct title to record');
   });
 
   test('queryRecord - primary data being null', async function (assert) {
@@ -328,7 +328,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(post.id, '1', 'Stores record using the correct id');
     assert.equal(post.title, 'Ember.js rocks', 'Sets correct title to record');
 
-    let author = await post.get('author');
+    let author = await post.author;
 
     assert.equal(passedUrl[1], 'http://example.com/user/2', 'The relationship user:2 was fetched by the correct url');
 
@@ -374,7 +374,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(post.id, '1', 'Stores record using the correct id');
     assert.equal(post.title, 'Ember.js rocks', 'Sets correct title to record');
 
-    let author = await post.get('author');
+    let author = await post.author;
 
     assert.equal(passedUrl[1], '/users/2', 'The relationship user:2 was fetched by the correct url');
     assert.equal(author.id, '2', 'Record has correct id');
@@ -421,7 +421,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(user.firstName, 'Yehuda', 'Sets correct firstName to record');
     assert.equal(user.lastName, 'Katz', 'Sets correct lastName to record');
 
-    let company = await user.get('company');
+    let company = await user.company;
 
     assert.equal(
       passedUrl[1],
@@ -471,7 +471,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(post.id, '1', 'Record has correct id');
     assert.equal(post.title, 'Ember.js rocks', 'Title is set correctly');
 
-    let author = await post.get('author');
+    let author = await post.author;
 
     assert.equal(passedUrl.length, 1);
 
@@ -526,12 +526,12 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(post.id, '1');
     assert.equal(post.title, 'Ember.js rocks');
 
-    let comments = await post.get('comments');
+    let comments = await post.comments;
 
     assert.equal(passedUrl[1], 'http://example.com/post/1/comments', 'The related records comments using correct url');
     assert.equal(comments.length, 2, 'Loads the correct number of comments from response');
-    assert.equal(comments.get('firstObject.text'), 'This is the first comment', 'First comment text is correct');
-    assert.equal(comments.get('lastObject.text'), 'This is the second comment', 'Second comment text is correct');
+    assert.equal(comments.firstObject.text, 'This is the first comment', 'First comment text is correct');
+    assert.equal(comments.lastObject.text, 'This is the second comment', 'Second comment text is correct');
   });
 
   test('find a single record with hasMany link as object { data }', async function (assert) {
@@ -581,13 +581,13 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(post.id, '1', 'Record id is correct');
     assert.equal(post.title, 'Ember.js rocks', 'Record title is correct');
 
-    let comments = await post.get('comments');
+    let comments = await post.comments;
 
     assert.equal(passedUrl[1], '/comments/2', 'Builds correct URL to fetch related record');
     assert.equal(passedUrl[2], '/comments/3', 'Builds correct URL to fetch related record');
     assert.equal(comments.length, 2);
-    assert.equal(comments.get('firstObject.text'), 'This is the first comment', 'First comment text is correct');
-    assert.equal(comments.get('lastObject.text'), 'This is the second comment', 'Second comment text is correct');
+    assert.equal(comments.firstObject.text, 'This is the first comment', 'First comment text is correct');
+    assert.equal(comments.lastObject.text, 'This is the second comment', 'Second comment text is correct');
   });
 
   test('find a single record with hasMany link as object { data } (polymorphic)', async function (assert) {
@@ -640,14 +640,14 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(user.firstName, 'Yehuda', 'Record firstName is loaded');
     assert.equal(user.lastName, 'Katz', 'Record lastName is loaded');
 
-    let handles = await user.get('handles');
+    let handles = await user.handles;
 
     assert.equal(passedUrl[1], '/github-handles/2', 'Builds correct URL to fetch related record');
     assert.equal(passedUrl[2], '/twitter-handles/3', 'Builds correct URL to fetch related record');
 
-    assert.equal(handles.get('length'), 2);
-    assert.equal(handles.get('firstObject.username'), 'wycats', 'First handle username is correct');
-    assert.equal(handles.get('lastObject.nickname'), '@wycats', 'Second handle nickname is correct');
+    assert.equal(handles.length, 2);
+    assert.equal(handles.firstObject.username, 'wycats', 'First handle username is correct');
+    assert.equal(handles.lastObject.nickname, '@wycats', 'Second handle nickname is correct');
   });
 
   test('find a single record with sideloaded hasMany link as object { data }', async function (assert) {
@@ -695,13 +695,13 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     assert.equal(post.id, '1', 'Record id is loaded');
     assert.equal(post.title, 'Ember.js rocks', 'Record title is loaded');
 
-    let comments = await post.get('comments');
+    let comments = await post.comments;
 
     assert.equal(passedUrl.length, 1, 'Do not call extra end points because related records are included');
 
-    assert.equal(comments.get('length'), 2, 'Loads related records');
-    assert.equal(comments.get('firstObject.text'), 'This is the first comment', 'First comment text is correct');
-    assert.equal(comments.get('lastObject.text'), 'This is the second comment', 'Second comment text is correct');
+    assert.equal(comments.length, 2, 'Loads related records');
+    assert.equal(comments.firstObject.text, 'This is the first comment', 'First comment text is correct');
+    assert.equal(comments.lastObject.text, 'This is the second comment', 'Second comment text is correct');
   });
 
   test('find a single record with sideloaded hasMany link as object { data } (polymorphic)', async function (assert) {
@@ -748,17 +748,17 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
 
     assert.equal(passedUrl[0], '/users/1');
 
-    assert.equal(user.get('id'), '1');
-    assert.equal(user.get('firstName'), 'Yehuda');
-    assert.equal(user.get('lastName'), 'Katz');
+    assert.equal(user.id, '1');
+    assert.equal(user.firstName, 'Yehuda');
+    assert.equal(user.lastName, 'Katz');
 
-    let handles = await user.get('handles');
+    let handles = await user.handles;
 
     assert.equal(passedUrl.length, 1, 'Do not call extra end points because related records are included');
 
-    assert.equal(handles.get('length'), 2);
-    assert.equal(handles.get('firstObject.username'), 'wycats');
-    assert.equal(handles.get('lastObject.nickname'), '@wycats');
+    assert.equal(handles.length, 2);
+    assert.equal(handles.firstObject.username, 'wycats');
+    assert.equal(handles.lastObject.nickname, '@wycats');
   });
 
   test('create record', async function (assert) {
@@ -799,7 +799,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
       company: company,
     });
 
-    let handles = await user.get('handles');
+    let handles = await user.handles;
 
     handles.addObject(githubHandle);
 
@@ -873,7 +873,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
     user.set('firstName', 'Yehuda!');
     user.set('company', company);
 
-    let handles = await user.get('handles');
+    let handles = await user.handles;
 
     handles.addObject(githubHandle);
 
@@ -955,7 +955,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
 
     user.set('firstName', 'Yehuda!');
 
-    let handles = await user.get('handles');
+    let handles = await user.handles;
 
     handles.addObject(githubHandle);
     handles.addObject(twitterHandle);
@@ -1016,7 +1016,7 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
 
     assert.equal(passedUrl[0], '/posts/1');
 
-    let author = await post.get('author');
+    let author = await post.author;
 
     assert.equal(passedUrl[1], 'http://example.com/post/1/author');
     assert.strictEqual(author, null);
