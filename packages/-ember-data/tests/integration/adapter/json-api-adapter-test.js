@@ -231,10 +231,10 @@ module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks)
       },
     ]);
 
-    let posts = await store.query('post', { filter: { id: 1 } });
+    let posts = await store.query('post', { filter: { id: '1' } });
 
     assert.strictEqual(passedUrl[0], '/posts', 'Builds correct URL');
-    assert.deepEqual(passedHash[0], { data: { filter: { id: 1 } } }, 'Sends correct params to adapter');
+    assert.deepEqual(passedHash[0], { data: { filter: { id: '1' } } }, 'Sends correct params to adapter');
 
     assert.strictEqual(posts.length, 1, 'Returns the correct number of records');
     assert.strictEqual(posts.firstObject.title, 'Ember.js rocks', 'Sets correct title to record');
