@@ -1,63 +1,60 @@
 import { module, test } from 'qunit';
 import { resolve } from 'rsvp';
-
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import DS from 'ember-data';
 import { setupTest } from 'ember-qunit';
-
 import testInDebug from '@ember-data/unpublished-test-infra/test-support/test-in-debug';
 
 let store, adapter;
 let passedUrl, passedVerb, passedHash;
 
-let User, Post, Comment, Handle, GithubHandle, TwitterHandle, Company, DevelopmentShop, DesignStudio;
-
 module('integration/adapter/json-api-adapter - JSONAPIAdapter', function (hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function () {
-    User = DS.Model.extend({
-      firstName: DS.attr('string'),
-      lastName: DS.attr('string'),
-      posts: DS.hasMany('post', { async: true }),
-      handles: DS.hasMany('handle', { async: true, polymorphic: true }),
-      company: DS.belongsTo('company', { async: true, polymorphic: true }),
-    });
+    class User extends Model {
+      @attr('string') firstName;
+      @attr('string') lastName;
+      @hasMany('post', { async: true }) posts;
+      @hasMany('handle', { async: true, polymorphic: true }) handles;
+      @belongsTo('company', { async: true, polymorphic: true }) company;
+    }
 
-    Post = DS.Model.extend({
-      title: DS.attr('string'),
-      author: DS.belongsTo('user', { async: true }),
-      comments: DS.hasMany('comment', { async: true }),
-    });
+    class Post extends Model {
+      @attr('string') title;
+      @belongsTo('user', { async: true }) author;
+      @hasMany('comment', { async: true }) comments;
+    }
 
-    Comment = DS.Model.extend({
-      text: DS.attr('string'),
-      post: DS.belongsTo('post', { async: true }),
-    });
+    class Comment extends Model {
+      @attr('string') text;
+      @belongsTo('post', { async: true }) post;
+    }
 
-    Handle = DS.Model.extend({
-      user: DS.belongsTo('user', { async: true }),
-    });
+    class Handle extends Model {
+      @belongsTo('user', { async: true }) user;
+    }
 
-    GithubHandle = Handle.extend({
-      username: DS.attr('string'),
-    });
+    class GithubHandle extends Handle {
+      @attr('string') username;
+    }
 
-    TwitterHandle = Handle.extend({
-      nickname: DS.attr('string'),
-    });
+    class TwitterHandle extends Handle {
+      @attr('string') nickname;
+    }
 
-    Company = DS.Model.extend({
-      name: DS.attr('string'),
-      employees: DS.hasMany('user', { async: true }),
-    });
+    class Company extends Model {
+      @attr('string') name;
+      @hasMany('user', { async: true }) employees;
+    }
 
-    DevelopmentShop = Company.extend({
-      coffee: DS.attr('boolean'),
-    });
+    class DevelopmentShop extends Company {
+      @attr('boolean') coffee;
+    }
 
-    DesignStudio = Company.extend({
-      hipsters: DS.attr('number'),
-    });
+    class DesignStudio extends Company {
+      @attr('number') hipsters;
+    }
 
     this.owner.register('adapter:application', DS.JSONAPIAdapter.extend());
     this.owner.register('serializer:application', DS.JSONAPISerializer.extend());
