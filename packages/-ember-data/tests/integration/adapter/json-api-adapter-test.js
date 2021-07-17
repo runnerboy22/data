@@ -1,8 +1,10 @@
 import { module, test } from 'qunit';
 import { resolve } from 'rsvp';
-import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
+
 import DS from 'ember-data';
 import { setupTest } from 'ember-qunit';
+
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import testInDebug from '@ember-data/unpublished-test-infra/test-support/test-in-debug';
 
 let store, adapter;
