@@ -126,7 +126,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
     "qunit": "^2.10.0",
-    "qunit-dom": "^1.2.0",
+    "qunit-dom": "^2.0.0",
     "rimraf": "^3.0.2",
     "rsvp": "^4.8.5",
     "semver": "^7.1.3",
