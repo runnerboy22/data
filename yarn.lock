@@ -1026,6 +1026,34 @@
     resolve "^1.8.1"
     semver "^7.3.2"
 
+"@embroider/macros@^0.50.0 || ^1.0.0":
+  version "1.8.3"
+  resolved "https://registry.npmjs.org/@embroider/macros/-/macros-1.8.3.tgz#2f0961ab8871f6ad819630208031d705b357757e"
+  integrity sha512-gnIOfTL/pUkoD6oI7JyWOqXlVIUgZM+CnbH10/YNtZr2K0hij9eZQMdgjOZZVgN0rKOFw9dIREqc1ygrJHRYQA==
+  dependencies:
+    "@embroider/shared-internals" "1.8.3"
+    assert-never "^1.2.1"
+    babel-import-util "^1.1.0"
+    ember-cli-babel "^7.26.6"
+    find-up "^5.0.0"
+    lodash "^4.17.21"
+    resolve "^1.20.0"
+    semver "^7.3.2"
+
+"@embroider/shared-internals@1.8.3":
+  version "1.8.3"
+  resolved "https://registry.npmjs.org/@embroider/shared-internals/-/shared-internals-1.8.3.tgz#52d868dc80016e9fe983552c0e516f437bf9b9f9"
+  integrity sha512-N5Gho6Qk8z5u+mxLCcMYAoQMbN4MmH+z2jXwQHVs859bxuZTxwF6kKtsybDAASCtd2YGxEmzcc1Ja/wM28824w==
+  dependencies:
+    babel-import-util "^1.1.0"
+    ember-rfc176-data "^0.3.17"
+    fs-extra "^9.1.0"
+    js-string-escape "^1.0.1"
+    lodash "^4.17.21"
+    resolve-package-path "^4.0.1"
+    semver "^7.3.5"
+    typescript-memoize "^1.0.1"
+
 "@eslint/eslintrc@^0.4.0":
   version "0.4.0"
   resolved "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.0.tgz#99cc0a0584d72f1df38b900fb062ba995f395547"
@@ -3190,7 +3218,7 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-assert-never@^1.1.0:
+assert-never@^1.1.0, assert-never@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/assert-never/-/assert-never-1.2.1.tgz#11f0e363bf146205fb08193b5c7b90f4d1cf44fe"
   integrity sha512-TaTivMB6pYI1kXwrFlEhLeGfOqoDNdTxjCdwRfFFkEA30Eu+k48W34nlok2EYWJfFFzqaEmichdNM7th6M5HNw==
@@ -3491,6 +3519,11 @@ babel-helpers@^6.24.1:
   dependencies:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
+
+babel-import-util@^1.1.0:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/babel-import-util/-/babel-import-util-1.2.2.tgz#1027560e143a4a68b1758e71d4fadc661614e495"
+  integrity sha512-8HgkHWt5WawRFukO30TuaL9EiDUOdvyKtDwLma4uBNeUSDbOO0/hiPfavrOWxSS6J6TKXfukWHZ3wiqZhJ8ONQ==
 
 babel-loader@^8.0.6:
   version "8.2.2"
@@ -4393,14 +4426,6 @@ broccoli-debug@^0.6.1, broccoli-debug@^0.6.4, broccoli-debug@^0.6.5:
     heimdalljs-logger "^0.1.7"
     symlink-or-copy "^1.1.8"
     tree-sync "^1.2.2"
-
-broccoli-file-creator@^1.1.1:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/broccoli-file-creator/-/broccoli-file-creator-1.2.0.tgz#27f1b25b1b00e7bb7bf3d5d7abed5f4d5388df4d"
-  integrity sha512-l9zthHg6bAtnOfRr/ieZ1srRQEsufMZID7xGYRW3aBDv3u/3Eux+Iawl10tAGYE5pL9YB4n5X4vxkp6iNOoZ9g==
-  dependencies:
-    broccoli-plugin "^1.1.0"
-    mkdirp "^0.5.1"
 
 broccoli-file-creator@^2.1.1:
   version "2.1.1"
@@ -6608,7 +6633,7 @@ ember-cli-babel-plugin-helpers@^1.0.0, ember-cli-babel-plugin-helpers@^1.1.0, em
   resolved "https://registry.npmjs.org/ember-cli-babel-plugin-helpers/-/ember-cli-babel-plugin-helpers-1.1.1.tgz#5016b80cdef37036c4282eef2d863e1d73576879"
   integrity sha512-sKvOiPNHr5F/60NLd7SFzMpYPte/nnGkq/tMIfXejfKHIhaiIkYFqX8Z9UFTKWLLn+V7NOaby6niNPZUdvKCRw==
 
-ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.3.0, ember-cli-babel@^6.8.1:
+ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.8.1:
   version "6.18.0"
   resolved "https://registry.npmjs.org/ember-cli-babel/-/ember-cli-babel-6.18.0.tgz#3f6435fd275172edeff2b634ee7b29ce74318957"
   integrity sha512-7ceC8joNYxY2wES16iIBlbPSxwKDBhYwC8drU3ZEvuPDMwVv1KzxCNu1fvxyFEBWhwaRNTUxSCsEVoTd9nosGA==
@@ -6627,40 +6652,7 @@ ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.3.0, ember-cli-babel@^6.8.1:
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.11.0, ember-cli-babel@^7.12.0, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.5, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.2, ember-cli-babel@^7.4.0, ember-cli-babel@^7.7.3, ember-cli-babel@^7.8.0:
-  version "7.26.4"
-  resolved "https://registry.npmjs.org/ember-cli-babel/-/ember-cli-babel-7.26.4.tgz#b73d53592c05479814ca1770b3b849d4e01a87f0"
-  integrity sha512-GibwLrBUVj8DxNMnbE5PObEIeznX6ohOdYHoSMmTkCBuXa/I9amRGIjBhNlDbAJj+exVKKZoEGAdrV13gnyftQ==
-  dependencies:
-    "@babel/core" "^7.12.0"
-    "@babel/helper-compilation-targets" "^7.12.0"
-    "@babel/plugin-proposal-class-properties" "^7.13.0"
-    "@babel/plugin-proposal-decorators" "^7.13.5"
-    "@babel/plugin-transform-modules-amd" "^7.13.0"
-    "@babel/plugin-transform-runtime" "^7.13.9"
-    "@babel/plugin-transform-typescript" "^7.13.0"
-    "@babel/polyfill" "^7.11.5"
-    "@babel/preset-env" "^7.12.0"
-    "@babel/runtime" "7.12.18"
-    amd-name-resolver "^1.3.1"
-    babel-plugin-debug-macros "^0.3.4"
-    babel-plugin-ember-data-packages-polyfill "^0.1.2"
-    babel-plugin-ember-modules-api-polyfill "^3.5.0"
-    babel-plugin-module-resolver "^3.2.0"
-    broccoli-babel-transpiler "^7.8.0"
-    broccoli-debug "^0.6.4"
-    broccoli-funnel "^2.0.2"
-    broccoli-source "^2.1.2"
-    clone "^2.1.2"
-    ember-cli-babel-plugin-helpers "^1.1.1"
-    ember-cli-version-checker "^4.1.0"
-    ensure-posix-path "^1.0.2"
-    fixturify-project "^1.10.0"
-    resolve-package-path "^3.1.0"
-    rimraf "^3.0.1"
-    semver "^5.5.0"
-
-ember-cli-babel@^7.26.6:
+ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.11.0, ember-cli-babel@^7.12.0, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.5, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.2, ember-cli-babel@^7.26.6, ember-cli-babel@^7.4.0, ember-cli-babel@^7.7.3, ember-cli-babel@^7.8.0:
   version "7.26.6"
   resolved "https://registry.npmjs.org/ember-cli-babel/-/ember-cli-babel-7.26.6.tgz#322fbbd3baad9dd99e3276ff05bc6faef5e54b39"
   integrity sha512-040svtfj2RC35j/WMwdWJFusZaXmNoytLAMyBDGLMSlRvznudTxZjGlPV6UupmtTBApy58cEF8Fq4a+COWoEmQ==
@@ -7203,13 +7195,13 @@ ember-export-application-global@^2.0.1:
   resolved "https://registry.npmjs.org/ember-export-application-global/-/ember-export-application-global-2.0.1.tgz#b120a70e322ab208defc9e2daebe8d0dfc2dcd46"
   integrity sha512-B7wiurPgsxsSGzJuPFkpBWnaeuCu2PGpG2BjyrfA1VcL7//o+5RSnZqiCEY326y7qmxb2GoCgo0ft03KBU0rRw==
 
-ember-get-config@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.npmjs.org/ember-get-config/-/ember-get-config-0.2.4.tgz#118492a2a03d73e46004ed777928942021fe1ecd"
-  integrity sha1-EYSSoqA9c+RgBO13eSiUICH+Hs0=
+ember-get-config@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/ember-get-config/-/ember-get-config-2.1.1.tgz#bede76c25d95dbefab8d30064abf7aa00bc19235"
+  integrity sha512-uNmv1cPG/4qsac8oIf5txJ2FZ8p88LEpG4P3dNcjsJS98Y8hd0GPMFwVqpnzI78Lz7VYRGQWY4jnE4qm5R3j4g==
   dependencies:
-    broccoli-file-creator "^1.1.1"
-    ember-cli-babel "^6.3.0"
+    "@embroider/macros" "^0.50.0 || ^1.0.0"
+    ember-cli-babel "^7.26.6"
 
 ember-inflector@^4.0.1:
   version "4.0.1"
@@ -7661,8 +7653,7 @@ eslint-module-utils@^2.6.0:
     pkg-dir "^2.0.0"
 
 "eslint-plugin-ember-data@link:./packages/unpublished-eslint-rules":
-  version "0.0.0"
-  uid ""
+  version "3.29.0-alpha.4"
 
 eslint-plugin-ember@^10.3.0, eslint-plugin-ember@^10.4.1:
   version "10.4.1"
@@ -13590,6 +13581,13 @@ resolve-package-path@^3.1.0:
     path-root "^0.1.1"
     resolve "^1.17.0"
 
+resolve-package-path@^4.0.1:
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/resolve-package-path/-/resolve-package-path-4.0.3.tgz#31dab6897236ea6613c72b83658d88898a9040aa"
+  integrity sha512-SRpNAPW4kewOaNUt8VPqhJ0UMxawMwzJD8V7m1cJfdSTK9ieZwS6K7Dabsm4bmLFM96Z5Y/UznrpG5kt1im8yA==
+  dependencies:
+    path-root "^0.1.1"
+
 resolve-path@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/resolve-path/-/resolve-path-1.4.0.tgz#c4bda9f5efb2fce65247873ab36bb4d834fe16f7"
@@ -13834,6 +13832,13 @@ semver@^7.1.1, semver@^7.1.3, semver@^7.2.1, semver@^7.3.2, semver@^7.3.4:
   version "7.3.5"
   resolved "https://registry.npmjs.org/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
   integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
+  dependencies:
+    lru-cache "^6.0.0"
+
+semver@^7.3.5:
+  version "7.3.7"
+  resolved "https://registry.npmjs.org/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
+  integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
   dependencies:
     lru-cache "^6.0.0"
 
@@ -15259,6 +15264,11 @@ typescript-memoize@^1.0.0-alpha.3:
   version "1.0.0"
   resolved "https://registry.npmjs.org/typescript-memoize/-/typescript-memoize-1.0.0.tgz#ad3b0e7e5a411ca234be123f913a2a31302b7eb6"
   integrity sha512-B1eufjs/mGzHqoGeI1VT/dnSBoZr2v3i3/Wm8NmdxlZflyVdleE8wO0QwUuj4NfundD7T5nU3I7HSKp/5BD9og==
+
+typescript-memoize@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/typescript-memoize/-/typescript-memoize-1.1.0.tgz#4a8f512d06fc995167c703a3592219901db8bc79"
+  integrity sha512-LQPKVXK8QrBBkL/zclE6YgSWn0I8ew5m0Lf+XL00IwMhlotqRLlzHV+BRrljVQIc+NohUAuQP7mg4HQwrx5Xbg==
 
 typescript@~4.2.4:
   version "4.2.4"

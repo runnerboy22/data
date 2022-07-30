@@ -22,7 +22,7 @@
     "ember-cli-babel": "^7.26.6",
     "ember-cli-blueprint-test-helpers": "^0.19.2",
     "ember-cli-typescript": "^4.1.0",
-    "ember-get-config": "^0.2.4",
+    "ember-get-config": "^2.1.1",
     "testem": "^3.0.3"
   },
   "devDependencies": {
