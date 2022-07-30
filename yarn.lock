@@ -6917,9 +6917,9 @@ ember-cli-template-lint@^2.0.2:
     walk-sync "^2.0.2"
 
 ember-cli-terser@~4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/ember-cli-terser/-/ember-cli-terser-4.0.1.tgz#0da0b8f2b09989e8c992b207553ddec1bbb65915"
-  integrity sha512-vvp0uVl8reYeW9EZjSXRPR3Bq7y4u9CYlUdI7j/WzMPDj3/gUHU4Z7CHYOCrftrClQvFfqO2eXmHwDA6F7SLug==
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/ember-cli-terser/-/ember-cli-terser-4.0.2.tgz#c436a9e4159f76a615b051cba0584844652b7dcd"
+  integrity sha512-Ej77K+YhCZImotoi/CU2cfsoZaswoPlGaM5TB3LvjvPDlVPRhxUHO2RsaUVC5lsGeRLRiHCOxVtoJ6GyqexzFA==
   dependencies:
     broccoli-terser-sourcemap "^4.1.0"
 
@@ -7661,8 +7661,7 @@ eslint-module-utils@^2.6.0:
     pkg-dir "^2.0.0"
 
 "eslint-plugin-ember-data@link:./packages/unpublished-eslint-rules":
-  version "0.0.0"
-  uid ""
+  version "3.29.0-alpha.4"
 
 eslint-plugin-ember@^10.3.0, eslint-plugin-ember@^10.4.1:
   version "10.4.1"
